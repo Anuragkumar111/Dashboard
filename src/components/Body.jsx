@@ -1,5 +1,6 @@
 import { FaSearch } from 'react-icons/fa';
 import { BiSort, BiDownload } from 'react-icons/bi';
+import { transactionsConsts } from '../constants/transactionConsts';
 
 const Body = () => {
   return (
@@ -25,7 +26,7 @@ const Body = () => {
         </div>
       </div>
       <p className='mt-6 text-2xl font-medium'>Transactions | This Month</p>
-      <div className='shadow-lg  mt-6 p-4'>
+      <div className='shadow-lg  mt-6 space-y-4 p-4'>
         <div className='flex flex-row justify-between'>
           <div className='border w-1/4 border-gray-300 flex flex-row items-center rounded-md p-2 space-x-2'>
             <FaSearch className='fill-gray-500' />
@@ -43,6 +44,54 @@ const Body = () => {
             <div className='flex items-center border rounded border-gray-300 px-2'>
               <BiDownload size={20} />
             </div>
+          </div>
+        </div>
+        <div className='lg:h-[500px] h-full'>
+          <table className='w-full h-[480px] border-collapse border-none'>
+            <thead>
+              <tr className='bg-[#F2F2F2] border-none'>
+                <th className='text-left font-medium py-[8px] pl-[20px]'>
+                  Order ID
+                </th>
+                <th className='text-left font-medium pl-[20px]'>Order Date</th>
+                <th className='font-medium'>Order Amount</th>
+                <th className='text-right font-medium pr-[20px]'>Fees</th>
+              </tr>
+            </thead>
+            <tbody className='text-center border-none'>
+              {transactionsConsts.map((trans, index) => (
+                <tr key={index} className='border-b-[#E6E6E6] border-b-[.6px] '>
+                  <td className='text-blue-600 text-left pl-[20px]'>
+                    {trans.orderId}
+                  </td>
+                  <td className='text-left pl-[20px]'>{trans.orderDate}</td>
+                  <td className='pl-[40px]'>{trans.orderAmount}</td>
+                  <td className='text-right pr-[20px]'>{trans.fees}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <div className='flex justify-center items-center w-full'>
+          <div className='text-center flex'>
+            <button className='border-[1px] w-[60px] h-[25px] rounded border-cyan-950  hover:bg-cyan-100 duration-500'>
+              ←
+            </button>
+            <div className='w-[350p] flex overflow-hidden'>
+              {Array.from({ length: 6 }, (_, i) => i + 1).map((page) => (
+                <button
+                  key={page}
+                  className={`h-[25px] w-[20px] mx-[6px] rounded-[3px] text-[16px] ${
+                    page === 2 ? 'bg-blue-500 text-white' : ''
+                  }`}
+                >
+                  {page}
+                </button>
+              ))}
+            </div>
+            <button className='border-[1px] w-[60px] h-[25px] rounded border-cyan-950 hover:bg-cyan-100 duration-500'>
+              →
+            </button>
           </div>
         </div>
       </div>
