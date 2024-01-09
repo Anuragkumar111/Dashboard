@@ -94,7 +94,7 @@ const Tabbar = () => {
   ];
 
   return (
-    <div className='bg-blue-950 p-2 w-48 flex flex-col justify-between'>
+    <div className='bg-[#1E2640] p-2 w-48 flex flex-col justify-between'>
       <div>
         <div className='flex flex-row justify-between items-center mb-6 p-2'>
           <div className='flex flex-row space-x-4'>
@@ -110,7 +110,9 @@ const Tabbar = () => {
           <div
             key={data.id}
             className={`flex flex-row items-center mb-4 space-x-2 px-2 hover:cursor-pointer ${
-              data.isSelected ? 'bg-gray-700 rounded py-1' : ''
+              data.isSelected
+                ? 'rounded-[4px] bg-white bg-opacity-10'
+                : ' opacity-[0.8]'
             }`}
           >
             {data.icon}
@@ -118,8 +120,8 @@ const Tabbar = () => {
           </div>
         ))}
       </div>
-      <div className='bg-blue-900 flex flex-row rounded-sm p-2 space-x-2 mt-4'>
-        <div className='bg-blue-800 px-1 rounded-sm'>
+      <div className='bg-white bg-opacity-10 flex flex-row rounded-sm p-2 space-x-2 mt-4'>
+        <div className='bg-gray-500 px-1 rounded-sm'>
           <FaMoneyCheck size={30} />
         </div>
         <div>

@@ -1,4 +1,4 @@
-import { FaSearch } from 'react-icons/fa';
+import { MdChevronRight, MdChevronLeft, MdSearch } from 'react-icons/md';
 import { BiSort, BiDownload } from 'react-icons/bi';
 import { transactionsConsts } from '../constants/transactionConsts';
 
@@ -29,7 +29,7 @@ const Body = () => {
       <div className='shadow-lg  mt-6 space-y-4 p-4'>
         <div className='flex flex-row justify-between'>
           <div className='border w-1/4 border-gray-300 flex flex-row items-center rounded-md p-2 space-x-2'>
-            <FaSearch className='fill-gray-500' />
+            <MdSearch className='fill-gray-500' size={20} />
             <input
               type='text'
               placeholder='Search by order ID...'
@@ -50,23 +50,21 @@ const Body = () => {
           <table className='w-full h-[480px] border-collapse border-none'>
             <thead>
               <tr className='bg-[#F2F2F2] border-none'>
-                <th className='text-left font-medium py-[8px] pl-[20px]'>
-                  Order ID
-                </th>
-                <th className='text-left font-medium pl-[20px]'>Order Date</th>
+                <th className='text-left font-medium py-2 pl-4'>Order ID</th>
+                <th className='text-left font-medium pl-6'>Order Date</th>
                 <th className='font-medium'>Order Amount</th>
-                <th className='text-right font-medium pr-[20px]'>Fees</th>
+                <th className='text-right font-medium pr-4'>Fees</th>
               </tr>
             </thead>
             <tbody className='text-center border-none'>
               {transactionsConsts.map((trans, index) => (
-                <tr key={index} className='border-b-[#E6E6E6] border-b-[.6px] '>
-                  <td className='text-blue-600 text-left pl-[20px]'>
+                <tr key={index} className='border-b-[#E6E6E6] border-b '>
+                  <td className='text-blue-600 text-left pl-6'>
                     {trans.orderId}
                   </td>
-                  <td className='text-left pl-[20px]'>{trans.orderDate}</td>
-                  <td className='pl-[40px]'>{trans.orderAmount}</td>
-                  <td className='text-right pr-[20px]'>{trans.fees}</td>
+                  <td className='text-left pl-7'>{trans.orderDate}</td>
+                  <td className='pl-8'>{trans.orderAmount}</td>
+                  <td className='text-right pr-4'>{trans.fees}</td>
                 </tr>
               ))}
             </tbody>
@@ -74,9 +72,10 @@ const Body = () => {
         </div>
         <div className='flex justify-center items-center w-full'>
           <div className='text-center flex'>
-            <button className='border-[1px] w-[60px] h-[25px] rounded border-cyan-950  hover:bg-cyan-100 duration-500'>
-              ←
-            </button>
+            <div className='flex flex-row items-center pr-2 space-x-1 border rounded border-cyan-950  hover:cursor-pointer'>
+              <MdChevronLeft />
+              <p>Previous</p>
+            </div>
             <div className='w-[350p] flex overflow-hidden'>
               {Array.from({ length: 6 }, (_, i) => i + 1).map((page) => (
                 <button
@@ -89,9 +88,10 @@ const Body = () => {
                 </button>
               ))}
             </div>
-            <button className='border-[1px] w-[60px] h-[25px] rounded border-cyan-950 hover:bg-cyan-100 duration-500'>
-              →
-            </button>
+            <div className='flex flex-row pl-2 space-x-1 items-center border rounded border-gray-300 hover:cursor-pointer'>
+              <p>Next</p>
+              <MdChevronRight size={20} />
+            </div>
           </div>
         </div>
       </div>
